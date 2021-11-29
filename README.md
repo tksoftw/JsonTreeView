@@ -1,2 +1,2 @@
 # JsonTreeView
-  A simple program to view jsons in a more clear way written in python
+  A simple python program for viewing jsons more clearly
