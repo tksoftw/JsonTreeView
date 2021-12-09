@@ -2,5 +2,10 @@
   A simple python program for viewing jsons more clearly
   
  # How to use
-  from treeviewer import treeView<br>
-  treeView(obj: (dict or list), output=None) default output is stdout
+  ```py
+  from treeviewer import treeView
+  ...
+  # Works for both dict and list types
+  treeView(obj: Any, output=None) # default output is stdout
+  ```
+  
