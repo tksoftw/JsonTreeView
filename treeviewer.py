@@ -1,39 +1,43 @@
-# DEPTHSTRING = "V V V V V"
+from contextlib import redirect_stdout
 
-def treeViewDict(d: dict, prefix = '') -> None:
-  for k in d.keys():
-    if isinstance(d[k], dict):
-      print(f"{len(prefix)*' ' + prefix}[\"{str(k)}\"]:")
-      prefix += '-'
-      treeViewDict(d[k], prefix)
-      prefix = prefix[:-1]
-    elif isinstance(d[k], list):
-      print(f"{len(prefix)*' ' + prefix}[\"{str(k)}\"]:")
-      prefix += '-'
-      treeViewList(d[k], prefix)
-      prefix = prefix[:-1]
+def startTree(c: any) -> None:
+    if isinstance(c, dict):
+        treeViewDict(c)
+    elif isinstance(c, list):
+        treeViewList(c)
     else:
-      print(f"{len(prefix)*' ' + prefix}[\"{str(k)}\"]:", str(type(d[k]))[8:-2])
+        print(c)
 
-def treeViewList(l: list, prefix = '') -> None:
-  for i in range(len(l)):
-    if isinstance(l[i], list):
-      print(f"{len(prefix)*' ' + prefix}[{i}]:")
-      prefix += '>'
-      treeViewList(l[i], prefix)
-      prefix = prefix[:-1]
-    elif isinstance(l[i], dict):
-      print(f"{len(prefix)*' ' + prefix}[{i}]:")
-      prefix += '>'
-      treeViewDict(l[i], prefix)
-      prefix = prefix[:-1]
+def treeViewDict(d: dict, prefix='') -> None:
+    prefix += '-'
+    for k, v in d.items():
+        suffix = f"[\"{k}\"]:"
+        printValues(v, prefix, suffix)
+    prefix = prefix[:-1]
+
+def treeViewList(l: list, prefix='') -> None:
+    prefix += '>'
+    for i, v in enumerate(l):
+        suffix = f"[{i}]:"
+        printValues(v, prefix, suffix)
+    prefix = prefix[:-1]
+
+def printValues(c: any, prefix: str, id: str) -> None:
+    spaces = (len(prefix)-1) * ' '
+    if isinstance(c, dict):
+        print(''.join([spaces, prefix[1:], id]))
+        treeViewDict(c, prefix)
+    elif isinstance(c, list):
+        print(''.join([spaces, prefix[1:], id]))
+        treeViewList(c, prefix)
     else:
-      print(f"{len(prefix)*' ' + prefix}[{i}]:", str(type(l[i]))[8:-2])
+        print(''.join([spaces, prefix[1:], id]), type(c).__name__)
 
-def viewTree(o: any) -> None:
-  if isinstance(o, dict):
-    treeViewDict(o)
-  elif isinstance(o, list):
-    treeViewList(o)
-  else:
-    print('Unsupported type')
+def treeView(c: any, output=None) -> None:
+    if not output:
+        startTree(c)
+    else:
+        with open(output, 'w') as file:
+            with redirect_stdout(file):
+                startTree(c)
+    
