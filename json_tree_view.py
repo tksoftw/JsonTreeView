@@ -33,11 +33,10 @@ def printValues(c: any, prefix: str, id: str) -> None:
     else:
         print(''.join([spaces, prefix[1:], id]), type(c).__name__)
 
-def treeView(c: any, output=None) -> None:
+def treeView(obj: any, output=None) -> None:
     if not output:
-        startTree(c)
+        startTree(obj)
     else:
         with open(output, 'w') as file:
             with redirect_stdout(file):
-                startTree(c)
-    
+                startTree(obj)
