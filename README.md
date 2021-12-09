@@ -3,7 +3,7 @@
   
  # How to use
   ```py
-  from treeviewer import treeView
+  from jsontreeview import treeView
   ...
   # Works for both dict and list types
   treeView(obj: Any, output=None) # default output is stdout
