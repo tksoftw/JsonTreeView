@@ -3,4 +3,4 @@
   
  # How to use
   from treeviewer import treeView<br>
-  treeView(o: dict or list, output=None) default output is stdout
+  treeView(obj: (dict or list), output=None) default output is stdout
