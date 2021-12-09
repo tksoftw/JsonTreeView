@@ -6,7 +6,7 @@
   from json_tree_view import treeView
   ...
   # Works for both dict and list types
-  treeView(obj: Any, output="out.txt") # optional output file argument, default is stdout
+  treeView(c: Any, output="out.txt") # optional output file argument, default is stdout
 ```
 
 # Example
