@@ -1,6 +1,6 @@
 from contextlib import redirect_stdout
 
-def startTree(c: any) -> None:
+def startTree(c) -> None:
     if isinstance(c, dict):
         treeViewDict(c)
     elif isinstance(c, list):
@@ -22,7 +22,7 @@ def treeViewList(l: list, prefix='') -> None:
         printValues(v, prefix, suffix)
     prefix = prefix[:-1]
 
-def printValues(c: any, prefix: str, id: str) -> None:
+def printValues(c, prefix: str, id: str) -> None:
     spaces = (len(prefix)-1) * ' '
     if isinstance(c, dict):
         print(''.join([spaces, prefix[1:], id]))
@@ -33,7 +33,7 @@ def printValues(c: any, prefix: str, id: str) -> None:
     else:
         print(''.join([spaces, prefix[1:], id]), type(c).__name__)
 
-def treeView(obj: any, output=None) -> None:
+def treeView(obj, output=None) -> None:
     if not output:
         startTree(obj)
     else:
