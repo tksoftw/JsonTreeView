@@ -1,5 +1,5 @@
 # JsonTreeView
-  A simple python program for viewing JSON data more clearly.
+  A simple python program for viewing JSON data more clearly
   
   
 # Installation
