@@ -13,14 +13,12 @@ def treeViewDict(d: dict, prefix='') -> None:
     for k, v in d.items():
         suffix = f"[\"{k}\"]:"
         printValues(v, prefix, suffix)
-    prefix = prefix[:-1]
 
 def treeViewList(l: list, prefix='') -> None:
     prefix += '>'
     for i, v in enumerate(l):
         suffix = f"[{i}]:"
         printValues(v, prefix, suffix)
-    prefix = prefix[:-1]
 
 def printValues(c, prefix: str, id: str) -> None:
     spaces = (len(prefix)-1) * ' '
