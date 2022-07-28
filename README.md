@@ -1,7 +1,13 @@
 # JsonTreeView
   A simple python program for viewing JSON data more clearly
   
- # How to use
+  
+# Installation
+  ```
+  pip install jsontreeview
+```
+
+# Usage
   ```py
   from jsontreeview import treeView
   ...
